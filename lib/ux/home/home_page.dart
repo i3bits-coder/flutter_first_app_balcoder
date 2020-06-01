@@ -8,8 +8,21 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  int _tabIndex;
+  TabController _tabController;
   int contador = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _tabIndex = 0;
+
+    _tabController =
+        new TabController(length: 2, initialIndex: _tabIndex, vsync: this);
+  }
 
   void incrementarContador() {
     setState(() {
@@ -22,15 +35,35 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.item),
+        bottom: TabBar(
+          tabs: [
+            Tab(
+              child: Icon(Icons.mood),
+            ),
+            Tab(
+              child: Icon(Icons.shop_two),
+            )
+          ],
+          controller: _tabController,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.plus_one),
         onPressed: incrementarContador,
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CustomContainer(title: '', count: contador),
+        child: TabBarView(
+          controller: _tabController,
+          children: [
+            CustomContainer(
+              title: 'Numero 1',
+              count: contador,
+            ),
+            CustomContainer(
+              title: 'Numero 2',
+              count: contador,
+            )
+          ],
         ),
       ),
     );
