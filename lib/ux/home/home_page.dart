@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first_app_balcoder/utils/widgets/custom_container.dart';
+import 'package:flutter_first_app_balcoder/ux/chat/chat_home_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({this.item});
@@ -48,19 +49,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.plus_one),
+        child: Icon(Icons.chat),
         onPressed: incrementarContador,
       ),
       body: Center(
         child: TabBarView(
           controller: _tabController,
           children: [
+            ChatHomePage(),
             CustomContainer(
-              title: 'Numero 1',
-              count: contador,
-            ),
-            CustomContainer(
-              title: 'Numero 2',
+              title: 'I love U',
               count: contador,
             )
           ],

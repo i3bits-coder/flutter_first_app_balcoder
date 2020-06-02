@@ -15,15 +15,15 @@ class CustomContainer extends StatelessWidget {
       height: height * 0.5,
       width: width * 0.7,
       decoration: BoxDecoration(
-          // : si no , ? if
-          color: count == 3 ? Colors.red : Colors.blue,
+          // ? if : si no 
+          color: count == 3 ? Colors.red : Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(25))),
       child: Center(
         child: Column(
           children: <Widget>[
             Text(
               title,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
             ),
             Text(count >= 3 ? "Hello World!" : count.toString(),
                 style: TextStyle(color: Colors.white, fontSize: width * 0.2))
